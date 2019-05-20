@@ -2,7 +2,7 @@ package lab5;
 
 public class Tree {
 
-    Node root;
+    public Node root;
 
     public void add(int value) {
         root = addRecursive(root, value);
