@@ -1,8 +1,35 @@
 package lab5;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Tree {
 
     public Node root;
+
+    public void printLevelOrder() {
+        if (root == null)
+            return;
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+
+        while (true) {
+            int nodeCount = q.size();
+            if (nodeCount == 0)
+                break;
+            while (nodeCount > 0) {
+                Node node = q.peek();
+                System.out.print(node.value + " ");
+                q.remove();
+                if (node.left != null)
+                    q.add(node.left);
+                if (node.right != null)
+                    q.add(node.right);
+                nodeCount--;
+            }
+            System.out.println();
+        }
+    }
 
     public void add(int value) {
         root = addRecursive(root, value);
